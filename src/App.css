@@ -1,0 +1,160 @@
+/* App-level layout — all component styles are in CSS Modules */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== DYNAMIC AURORA BACKGROUND ===== */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Animated gradient mesh that covers the whole viewport */
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(120, 56, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(0, 210, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(255, 46, 99, 0.06) 0%, transparent 50%);
+  animation: auroraDrift 25s ease-in-out infinite alternate;
+}
+
+/* Individual floating orbs */
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+/* Orb 1 — Electric Indigo/Violet — top-right, large */
+.aurora-orb--1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(120, 56, 255, 0.35) 0%, rgba(88, 28, 200, 0.15) 40%, transparent 70%);
+  top: -15%;
+  right: -10%;
+  animation: orbFloat1 18s ease-in-out infinite, orbFadeIn 2s ease forwards;
+}
+
+/* Orb 2 — Hot Coral/Rose — bottom-left */
+.aurora-orb--2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 71, 87, 0.3) 0%, rgba(255, 46, 99, 0.12) 40%, transparent 70%);
+  bottom: -10%;
+  left: -8%;
+  animation: orbFloat2 22s ease-in-out infinite, orbFadeIn 2s 0.5s ease forwards;
+}
+
+/* Orb 3 — Molten Amber/Gold — center-right */
+.aurora-orb--3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 170, 50, 0.25) 0%, rgba(255, 130, 20, 0.1) 40%, transparent 70%);
+  top: 35%;
+  right: -5%;
+  animation: orbFloat3 20s ease-in-out infinite, orbFadeIn 2s 1s ease forwards;
+}
+
+/* Orb 4 — Teal/Ice-Cyan — top-left */
+.aurora-orb--4 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.2) 0%, rgba(0, 180, 230, 0.08) 40%, transparent 70%);
+  top: 10%;
+  left: -8%;
+  animation: orbFloat4 24s ease-in-out infinite, orbFadeIn 2s 0.3s ease forwards;
+}
+
+/* Orb 5 — Emerald/Mint — center-bottom */
+.aurora-orb--5 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(46, 213, 137, 0.2) 0%, rgba(16, 185, 129, 0.08) 40%, transparent 70%);
+  bottom: 15%;
+  left: 30%;
+  animation: orbFloat5 26s ease-in-out infinite, orbFadeIn 2s 0.8s ease forwards;
+}
+
+/* Orb 6 — Magenta/Fuchsia — lower-right, small */
+.aurora-orb--6 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(200, 50, 255, 0.22) 0%, rgba(170, 30, 220, 0.08) 40%, transparent 70%);
+  bottom: 25%;
+  right: 15%;
+  animation: orbFloat6 19s ease-in-out infinite, orbFadeIn 2s 1.2s ease forwards;
+}
+
+/* Subtle noise overlay for texture */
+.aurora-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes orbFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes auroraDrift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-3%, 2%) rotate(8deg); }
+}
+
+@keyframes orbFloat1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-60px, 80px) scale(1.1); }
+  66% { transform: translate(40px, -40px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbFloat2 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(70px, -50px) scale(1.05); }
+  66% { transform: translate(-30px, 60px) scale(0.92); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbFloat3 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(-80px, 50px) scale(1.15) rotate(15deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+@keyframes orbFloat4 {
+  0% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(50px, 70px) scale(0.9); }
+  70% { transform: translate(-40px, -30px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbFloat5 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -70px) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orbFloat6 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(-50px, -40px) scale(1.12) rotate(-10deg); }
+  66% { transform: translate(30px, 50px) scale(0.88) rotate(10deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+}

@@ -1,0 +1,134 @@
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 32px;
+}
+
+.projectCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+  position: relative;
+}
+
+.projectCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+  border-color: var(--border-accent);
+}
+
+.cardHeader {
+  padding: 32px 32px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.folderIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.folderIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cardDate {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.cardBody {
+  padding: 24px 32px 32px;
+}
+
+.projectTitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.projectCard:hover .projectTitle {
+  color: var(--accent);
+}
+
+.projectDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.techTag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(124, 77, 255, 0.1);
+  border: 1px solid rgba(124, 77, 255, 0.2);
+  color: var(--accent-secondary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.cardFooter {
+  padding: 0 32px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: all var(--transition-fast);
+}
+
+.projectLink:hover {
+  color: #fff;
+  gap: 10px;
+}
+
+.projectLink svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 560px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardBody,
+  .cardHeader,
+  .cardFooter {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
