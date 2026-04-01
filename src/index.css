@@ -115,11 +115,8 @@ button {
   height: 100dvh;
   overflow-y: hidden; /* JS will toggle this to auto when reaching the top */
   overflow-x: hidden;
-}
-
-.section.scroll-active {
-  overflow-y: auto;
-}
+  
+  /* Removed backdrop-filter due to GPU stacking hang; using solid/opaque blends instead */
   z-index: 10;
   
   /* Flex layout with flex-start prevents top-clipping on tall content */
@@ -129,6 +126,16 @@ button {
   padding: 120px 0 60px; /* Safe padding so content starts below navbar */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.section.scroll-active {
+  overflow-y: auto;
+}
+
+/* Center short pages dynamically inside the flexbox while preserving top boundary for tall ones */
+.section > .container {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* Custom scrollbar for individual sections */
