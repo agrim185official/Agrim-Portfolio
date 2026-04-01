@@ -11,6 +11,8 @@ main {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  transform: translateZ(0); /* Prevent SVG fractal noise re-render */
+  backface-visibility: hidden;
 }
 
 /* Animated gradient mesh that covers the whole viewport */
@@ -32,10 +34,12 @@ main {
 .aurora-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  /* Removed filter: blur(80px) to fix tab-switching rendering hitch because radial gradients already appear blurred */
   opacity: 0;
   mix-blend-mode: screen;
   will-change: transform, opacity;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
 }
 
 /* Orb 1 — Electric Indigo/Violet — top-right, large */

@@ -51,7 +51,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -107,10 +107,56 @@ button {
 }
 
 /* ===== SECTION STYLES ===== */
-.section {
-  padding: var(--section-padding);
-  position: relative;
+main > section {
+  scroll-snap-align: start;
 }
+
+.section {
+  padding: calc(var(--section-padding) / 2) 0;
+  
+  /* Book-like scroll stacking */
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  /* Removed backdrop-filter due to GPU stacking hang; using solid/opaque blends instead */
+  z-index: 10;
+  
+  /* Flex layout with flex-start prevents top-clipping on tall content */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 120px 0 60px; /* Safe padding so content starts below navbar */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar for individual sections */
+.section::-webkit-scrollbar {
+  width: 6px;
+}
+.section::-webkit-scrollbar-track {
+  background: transparent;
+}
+.section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.section::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dim);
+}
+
+/* Distinct matching looks for every section */
+.section:nth-of-type(1) { background: #0a0e1a; border-top: none; box-shadow: none; }
+.section:nth-of-type(2) { background: #120c1c; border-top-color: rgba(124, 77, 255, 0.15); }
+.section:nth-of-type(3) { background: #0a141a; border-top-color: rgba(0, 229, 255, 0.15); }
+.section:nth-of-type(4) { background: #160e14; border-top-color: rgba(255, 46, 99, 0.15); }
+.section:nth-of-type(5) { background: #0a0e1a; border-top-color: rgba(255, 255, 255, 0.08); }
+.section:nth-of-type(6) { background: #0c1218; border-top-color: rgba(46, 213, 137, 0.15); }
+.section:nth-of-type(7) { background: #0f0c14; border-top-color: rgba(255, 170, 50, 0.15); }
+.section:nth-of-type(8) { background: #0a0e1a; }
 
 .section-header {
   text-align: center;
