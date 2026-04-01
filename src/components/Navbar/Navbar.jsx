@@ -1,16 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './Navbar.module.css';
 
 const NAV_ITEMS = ['About', 'Skills', 'Projects', 'Achievements', 'Experience', 'Contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+
+      // Auto-hide logic (hide on scroll down, show on scroll up)
+      if (currentScrollY > lastScrollY.current && currentScrollY > 150) {
+        // Only hide if menu is not open
+        setHidden(!menuOpen);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
 
       // Determine active section
       const sections = NAV_ITEMS.map((item) => ({
@@ -44,7 +56,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} id="navbar">
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''}`} id="navbar">
       <div className={styles.navContent}>
         <button className={styles.logo} onClick={scrollToTop} aria-label="Go to top">
           {'<'}<span>AB</span>{' />'}
