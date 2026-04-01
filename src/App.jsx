@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
@@ -9,6 +10,24 @@ import Experience from './components/Experience/Experience';
 import Contact from './components/Contact/Contact';
 
 function App() {
+  useEffect(() => {
+    // Lock in-page scroll until the page touches the top
+    const handleScroll = () => {
+      document.querySelectorAll('.section').forEach((section) => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= 5) {
+          section.classList.add('scroll-active');
+        } else {
+          section.classList.remove('scroll-active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <>
       {/* Dynamic aurora background */}
