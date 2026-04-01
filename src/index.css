@@ -51,7 +51,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -107,10 +106,6 @@ button {
 }
 
 /* ===== SECTION STYLES ===== */
-main > section {
-  scroll-snap-align: start;
-}
-
 .section {
   padding: calc(var(--section-padding) / 2) 0;
   
