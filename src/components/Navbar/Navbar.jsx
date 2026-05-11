@@ -74,7 +74,7 @@ export default function Navbar() {
           ))}
           <a
             className={styles.resumeBtn}
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1SBprrXx0JuDAxI11AxcoTMTiFjHQqVde/view"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -105,7 +105,7 @@ export default function Navbar() {
         ))}
         <a
           className={styles.resumeBtn}
-          href="/resume.pdf"
+          href="https://drive.google.com/file/d/1SBprrXx0JuDAxI11AxcoTMTiFjHQqVde/view"
           target="_blank"
           rel="noopener noreferrer"
         >
