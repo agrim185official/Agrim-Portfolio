@@ -47,20 +47,19 @@ export default function Achievements() {
   const [ref, isVisible] = useScrollReveal(0.1);
 
   return (
-    <section className="section" id="achievements">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-label">// Achievements</span>
-          <h2 className="section-title">Competitive Programming</h2>
-          <p className="section-subtitle">
-            Ratings, ranks, and milestones across platforms.
-          </p>
-        </div>
+    <div className="container">
+      <div className="section-header">
+        <span className="section-label">// Achievements</span>
+        <h2 className="section-title">Competitive Programming</h2>
+        <p className="section-subtitle">
+          Ratings, ranks, and milestones across platforms.
+        </p>
+      </div>
 
-        <div
-          ref={ref}
-          className={`${styles.achievementsGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
-        >
+      <div
+        ref={ref}
+        className={`${styles.achievementsGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
+      >
           {ACHIEVEMENTS.map((a) => (
             <div className={styles.card} key={a.platform}>
               <div className={styles.cardTop}>
@@ -82,8 +81,7 @@ export default function Achievements() {
               <p className={styles.detail}>{a.detail}</p>
             </div>
           ))}
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

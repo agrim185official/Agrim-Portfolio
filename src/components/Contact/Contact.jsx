@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { useScrollReveal } from '../../hooks/useAnimations';
 import styles from './Contact.module.css';
 
 export default function Contact() {
   const [ref, isVisible] = useScrollReveal(0.1);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [isSending, setIsSending] = useState(false);
+  const formRef = useRef();
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -12,26 +15,41 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // UI-only — no backend integration
-    alert(`Thanks, ${form.name}! Your message has been noted.`);
-    setForm({ name: '', email: '', message: '' });
+    setIsSending(true);
+
+    // EmailJS configuration
+    const serviceId = 'service_hr20h1v';
+    const templateId = 'template_dhr3eiu';
+    const publicKey = '7dt9ZBAlTqa2bYDLw';
+
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+      .then(() => {
+        alert(`Thanks, ${form.name}! Your message has been sent.`);
+        setForm({ name: '', email: '', message: '' });
+      })
+      .catch((error) => {
+        console.error('Email send failed:', error);
+        alert('Failed to send message. Please try again or email directly.');
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
   };
 
   return (
-    <section className="section" id="contact">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-label">// Contact</span>
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">
-            Have an opportunity or just want to say hi? Reach out!
-          </p>
-        </div>
+    <div className="container">
+      <div className="section-header">
+        <span className="section-label">// Contact</span>
+        <h2 className="section-title">Get In Touch</h2>
+        <p className="section-subtitle">
+          Have an opportunity or just want to say hi? Reach out!
+        </p>
+      </div>
 
-        <div
-          ref={ref}
-          className={`${styles.contactGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
-        >
+      <div
+        ref={ref}
+        className={`${styles.contactGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
+      >
           {/* Left — Info */}
           <div className={styles.contactInfo}>
             <div>
@@ -98,7 +116,7 @@ export default function Contact() {
           </div>
 
           {/* Right — Form */}
-          <form className={styles.contactForm} onSubmit={handleSubmit} id="contact-form">
+          <form ref={formRef} className={styles.contactForm} onSubmit={handleSubmit} id="contact-form">
             <div className={styles.formGroup}>
               <label htmlFor="contact-name">Your Name</label>
               <input
@@ -135,23 +153,22 @@ export default function Contact() {
                 required
               />
             </div>
-            <button type="submit" className={styles.submitBtn} id="contact-submit">
+            <button type="submit" className={styles.submitBtn} id="contact-submit" disabled={isSending}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="22" y1="2" x2="11" y2="13" />
                 <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
-              Send Message
+              {isSending ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>
 
-        {/* Footer */}
-        <div className={styles.footer}>
-          <p className={styles.footerText}>
-            Designed &amp; built by <span>Agrim Bhardwaj</span> © {new Date().getFullYear()}
-          </p>
-        </div>
+      {/* Footer */}
+      <div className={styles.footer}>
+        <p className={styles.footerText}>
+          Designed &amp; built by <span>Agrim Bhardwaj</span> © {new Date().getFullYear()}
+        </p>
       </div>
-    </section>
+    </div>
   );
 }

@@ -10,25 +10,23 @@ export default function Skills() {
   const [ref, isVisible] = useScrollReveal(0.1);
 
   return (
-    <section className="section" id="skills">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-label">// Skills</span>
-          <h2 className="section-title">Tech Stack</h2>
-          <p className="section-subtitle">
-            Technologies and tools I work with daily.
-          </p>
-        </div>
+    <div className="container">
+      <div className="section-header">
+        <span className="section-label">// Skills</span>
+        <h2 className="section-title">Tech Stack</h2>
+        <p className="section-subtitle">
+          Technologies and tools I work with daily.
+        </p>
+      </div>
 
-        <div
-          ref={ref}
-          className={`${styles.skillsGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
-        >
+      <div
+        ref={ref}
+        className={`${styles.skillsGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
+      >
           {SKILLS.map((skill) => (
             <span className={styles.chip} key={skill}>{skill}</span>
           ))}
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

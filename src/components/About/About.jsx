@@ -5,12 +5,11 @@ export default function About() {
   const [ref, isVisible] = useScrollReveal(0.15);
 
   return (
-    <section className="section" id="about">
-      <div className="container">
-        <div
-          ref={ref}
-          className={`${styles.about} fade-in-section ${isVisible ? 'visible' : ''}`}
-        >
+    <div className="container">
+      <div
+        ref={ref}
+        className={`${styles.about} fade-in-section ${isVisible ? 'visible' : ''}`}
+      >
           <div className={styles.aboutGrid}>
             <div className={styles.avatarWrapper}>
               <div className={styles.avatarOuter}>
@@ -49,8 +48,7 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

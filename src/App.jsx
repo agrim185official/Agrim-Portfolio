@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import './App.css';
+import { usePageScroll } from './hooks/usePageScroll';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
@@ -10,24 +10,8 @@ import Experience from './components/Experience/Experience';
 import Contact from './components/Contact/Contact';
 
 function App() {
-  useEffect(() => {
-    // Lock in-page scroll until the page touches the top
-    const handleScroll = () => {
-      document.querySelectorAll('.section').forEach((section) => {
-        const top = section.getBoundingClientRect().top;
-        if (top <= 5) {
-          section.classList.add('scroll-active');
-        } else {
-          section.classList.remove('scroll-active');
-        }
-      });
-    };
+  const { registerSection } = usePageScroll();
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   return (
     <>
       {/* Dynamic aurora background */}
@@ -41,14 +25,28 @@ function App() {
       </div>
 
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Achievements />
-        <Experience />
-        <Contact />
+      <main className="page-scroll-container">
+        <div ref={registerSection} className="section section-hero" id="hero">
+          <Hero />
+        </div>
+        <div ref={registerSection} className="section" id="about">
+          <About />
+        </div>
+        <div ref={registerSection} className="section" id="skills">
+          <Skills />
+        </div>
+        <div ref={registerSection} className="section" id="projects">
+          <Projects />
+        </div>
+        <div ref={registerSection} className="section" id="achievements">
+          <Achievements />
+        </div>
+        <div ref={registerSection} className="section" id="experience">
+          <Experience />
+        </div>
+        <div ref={registerSection} className="section" id="contact">
+          <Contact />
+        </div>
       </main>
     </>
   );

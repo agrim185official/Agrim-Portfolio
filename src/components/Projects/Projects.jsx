@@ -8,7 +8,7 @@ const PROJECTS = [
       'Full-stack grievance management system with 3-tier role-based access control (Admin, Staff, User). Features stateless JWT auth, automated escalation logic, file upload APIs, and CSV/PDF report generation.',
     tech: ['Java', 'Spring Boot', 'Spring Security', 'MySQL', 'JWT', 'REST API'],
     date: 'Nov 2025 – Feb 2026',
-    github: 'https://github.com/agrim185official',
+    github: 'https://github.com/agrim185official/ResolveIT',
   },
   {
     title: 'Interactive Web Portfolio',
@@ -16,7 +16,7 @@ const PROJECTS = [
       'Responsive SPA built with React, featuring component-based architecture, smooth scroll navigation, typing animations, and cross-device responsive design with a dark-mode aesthetic.',
     tech: ['HTML', 'CSS', 'JavaScript', 'React.js'],
     date: '2024',
-    github: '#',
+    github: 'https://github.com/agrim185official/Agrim-Portfolio',
   },
 ];
 
@@ -24,20 +24,19 @@ export default function Projects() {
   const [ref, isVisible] = useScrollReveal(0.1);
 
   return (
-    <section className="section" id="projects">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-label">// Projects</span>
-          <h2 className="section-title">Featured Work</h2>
-          <p className="section-subtitle">
-            Applications I've designed, built, and shipped.
-          </p>
-        </div>
+    <div className="container">
+      <div className="section-header">
+        <span className="section-label">// Projects</span>
+        <h2 className="section-title">Featured Work</h2>
+        <p className="section-subtitle">
+          Applications I've designed, built, and shipped.
+        </p>
+      </div>
 
-        <div
-          ref={ref}
-          className={`${styles.projectsGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
-        >
+      <div
+        ref={ref}
+        className={`${styles.projectsGrid} fade-in-section ${isVisible ? 'visible' : ''}`}
+      >
           {PROJECTS.map((project) => (
             <div className={styles.projectCard} key={project.title}>
               <div className={styles.cardHeader}>
@@ -74,8 +73,7 @@ export default function Projects() {
               </div>
             </div>
           ))}
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

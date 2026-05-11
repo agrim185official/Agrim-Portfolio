@@ -21,20 +21,19 @@ export default function Experience() {
   const [ref, isVisible] = useScrollReveal(0.1);
 
   return (
-    <section className="section" id="experience">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-label">// Experience</span>
-          <h2 className="section-title">Work Experience</h2>
-          <p className="section-subtitle">
-            Professional experience and internships.
-          </p>
-        </div>
+    <div className="container">
+      <div className="section-header">
+        <span className="section-label">// Experience</span>
+        <h2 className="section-title">Work Experience</h2>
+        <p className="section-subtitle">
+          Professional experience and internships.
+        </p>
+      </div>
 
-        <div
-          ref={ref}
-          className={`${styles.timeline} fade-in-section ${isVisible ? 'visible' : ''}`}
-        >
+      <div
+        ref={ref}
+        className={`${styles.timeline} fade-in-section ${isVisible ? 'visible' : ''}`}
+      >
           {EXPERIENCES.map((exp) => (
             <div className={styles.timelineItem} key={exp.company}>
               <div className={styles.timelineDot}>
@@ -59,8 +58,7 @@ export default function Experience() {
               </div>
             </div>
           ))}
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

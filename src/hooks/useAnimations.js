@@ -3,11 +3,16 @@ import { useEffect, useRef, useState } from 'react';
 export function useScrollReveal(threshold = 0.15) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const hasBeenVisible = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          hasBeenVisible.current = true;
+          setIsVisible(true);
+        }
+        // Once visible, keep it visible (no else to set false)
       },
       { threshold, rootMargin: "-50px" }
     );
@@ -20,7 +25,7 @@ export function useScrollReveal(threshold = 0.15) {
     };
   }, [threshold]);
 
-  return [ref, isVisible];
+  return [ref, isVisible || hasBeenVisible.current];
 }
 
 export function useTypingAnimation(texts, typingSpeed = 80, deletingSpeed = 40, pauseDuration = 2000) {

@@ -447,7 +447,7 @@
 
 /* Scroll indicator */
 .scrollIndicator {
-  position: absolute;
+  position: fixed;
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
@@ -463,6 +463,8 @@
   animation: fadeSlideUp 0.6s ease forwards;
   animation-delay: 1.5s;
   opacity: 0;
+  z-index: 100;
+  pointer-events: none;
 }
 
 .scrollMouse {
