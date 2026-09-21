@@ -1,19 +1,6 @@
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      @media (prefers-color-scheme: light) {
-        .code-text { fill: #1a1a1a; }
-        .bracket { fill: #42b9c8; }
-      }
-      @media (prefers-color-scheme: dark) {
-        .code-text { fill: #f3f5ed; }
-        .bracket { fill: #8be1e8; }
-      }
-    </style>
-  </defs>
-
   <!-- <AB /> as code tag -->
   <text x="60" y="72" font-family="JetBrains Mono, monospace" font-size="32" font-weight="600" text-anchor="middle">
-    <tspan class="bracket">&lt;</tspan><tspan class="code-text">AB</tspan><tspan class="bracket"> /&gt;</tspan>
+    <tspan fill="#42b9c8">&lt;</tspan><tspan fill="currentColor">AB</tspan><tspan fill="#42b9c8"> /&gt;</tspan>
   </text>
 </svg>
