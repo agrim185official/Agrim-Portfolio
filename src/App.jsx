@@ -4,7 +4,7 @@ import './App.css';
 const HeroScene = lazy(() => import('./components/HeroScene'));
 const projects = [
   { id: 'A01', title: 'ResolveIT', type: 'Systems / 2026', description: 'A grievance platform that turns messy escalation workflows into one dependable operating system.', stack: ['Java', 'Spring Boot', 'MySQL'], href: 'https://github.com/agrim185official/ResolveIT', tone: 'orange' },
-  { id: 'A02', title: 'Agrim Portfolio', type: 'Interface / 2025', description: 'A living profile for the work behind the work: clear, responsive, and deliberately unlike a template.', stack: ['React', 'Vite', 'CSS'], href: 'https://github.com/agrim185official/Agrim-Portfolio', tone: 'blue' },
+  { id: 'A02', title: 'Interactive Web Portfolio', type: 'Interface / 2025', description: 'A living profile for the work behind the work: clear, responsive, and deliberately unlike a template.', stack: ['React', 'Vite', 'CSS'], href: 'https://github.com/agrim185official/Agrim-Portfolio', tone: 'blue' },
 ];
 const skills = ['Java', 'Spring Boot', 'REST APIs', 'MySQL', 'React', 'JavaScript', 'C++', 'Git', 'Linux', 'DSA'];
 const achievements = [
@@ -34,6 +34,9 @@ function App() {
 
   return (
     <div className="field-notes">
+      <button className="theme-toggle" onClick={() => setIsDark((value) => !value)} aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}>
+        {isDark ? '☀️' : '🌙'}
+      </button>
       <aside className="index-rail">
         <button className="rail-monogram" onClick={() => jump('top')} aria-label="Back to top">
           <img src="/logo-ab.svg" alt="AB" />
@@ -47,7 +50,7 @@ function App() {
           <button onClick={() => jump('skills')}><b>05</b><span>Skills</span></button>
           <button onClick={() => jump('contact')}><b>06</b><span>Collaborate</span></button>
         </nav>
-        <div className="rail-bottom"><span>AGB</span><button className="mode-button" onClick={() => setIsDark((value) => !value)} aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}>{isDark ? 'LT' : 'DK'}</button></div>
+        <div className="rail-bottom"><span>AGB</span></div>
       </aside>
 
       <main className="notes-main">
