@@ -40,8 +40,8 @@ function App() {
       <aside className="index-rail">
         <button className="rail-monogram" onClick={() => jump('top')} aria-label="Back to top">
           <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <text x="60" y="72" font-size="36" text-anchor="middle" style={{ fontFamily: 'Courier New, Courier, monospace', fontWeight: 700, letterSpacing: '2px' }}>
-              <tspan className="bracket">&lt;</tspan><tspan className="ab-letters">AB</tspan><tspan className="bracket"> /&gt;</tspan>
+            <text x="60" y="72" fontSize="36" textAnchor="middle" style={{ fontFamily: 'Courier New, Courier, monospace', fontWeight: 700, letterSpacing: '2px' }}>
+              <tspan className="bracket">{ '<' }</tspan><tspan className="ab-letters">AB</tspan><tspan className="bracket">{ ' />' }</tspan>
             </text>
           </svg>
         </button>
