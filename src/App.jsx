@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import './App.css';
+import logoAB from '/logo-ab.svg';
 
 const HeroScene = lazy(() => import('./components/HeroScene'));
 const projects = [
@@ -39,7 +40,7 @@ function App() {
       </button>
       <aside className="index-rail">
         <button className="rail-monogram" onClick={() => jump('top')} aria-label="Back to top">
-          <img src="/logo-ab.svg" alt="AB" />
+          <img src={logoAB} alt="AB" />
         </button>
         <div className="rail-line" />
         <nav className="rail-nav" aria-label="Section index">
@@ -50,7 +51,7 @@ function App() {
           <button onClick={() => jump('skills')}><b>05</b><span>Skills</span></button>
           <button onClick={() => jump('contact')}><b>06</b><span>Collaborate</span></button>
         </nav>
-        <div className="rail-bottom"><span>AGB</span></div>
+        <div className="rail-bottom"><span>AB/</span></div>
       </aside>
 
       <main className="notes-main">
