@@ -54,12 +54,10 @@ function App() {
           <button onClick={() => jump('skills')}><b>05</b><span>Skills</span></button>
           <button onClick={() => jump('contact')}><b>06</b><span>Collaborate</span></button>
         </nav>
-        <div className="rail-bottom"><span>AB/</span></div>
       </aside>
 
       <main className="notes-main">
         <section className="opening" id="top">
-          <div className="opening-top"><span>FIELD NOTES / 2026</span><span>NEW DELHI, IN</span></div>
           <div className="opening-grid">
             <div className="opening-copy"><p className="micro-label"><i /> Available for thoughtful work</p><h1>Agr<span>i</span>m<br /><em>Bhardwaj</em></h1><p className="opening-lede">Software developer building dependable systems, clean APIs, and interfaces that make complex work feel simple.</p><div className="opening-actions"><button onClick={() => jump('work')}>Read the case studies <ExternalArrow /></button><a href="mailto:agrim185official@gmail.com">Start a conversation <ExternalArrow /></a></div></div>
             <div className="opening-object"><div className="object-grid" /><div className="object-label"><span>OBJECT / 001</span><span>BACKEND + PRODUCT</span></div><Suspense fallback={<div className="scene-loading" />}><HeroScene /></Suspense><span className="object-coord">28.6139° N / 77.2090° E</span></div>
@@ -77,7 +75,7 @@ function App() {
         <footer className="notes-footer">
           <span>AGRIM BHARDWAJ / SOFTWARE DEVELOPER</span>
           <span>© {new Date().getFullYear()}</span>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer">Resume <ExternalArrow /></a>
+          <a href="/Agrim_Bhardwaj_Resume.pdf" target="_blank" rel="noreferrer">Resume <ExternalArrow /></a>
           <a href="https://www.linkedin.com/in/agrim-bhardwaj-b149b1285/" target="_blank" rel="noreferrer">LinkedIn <ExternalArrow /></a>
           <a href="https://github.com/agrim185official" target="_blank" rel="noreferrer">GitHub <ExternalArrow /></a>
           <a href="https://codeforces.com/profile/Agrim_Bhardwaj" target="_blank" rel="noreferrer">Codeforces <ExternalArrow /></a>
