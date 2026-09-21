@@ -58,6 +58,7 @@ function App() {
 
       <main className="notes-main">
         <section className="opening" id="top">
+          <div className="opening-top"><span>NEW DELHI, IN</span></div>
           <div className="opening-grid">
             <div className="opening-copy"><p className="micro-label"><i /> Available for thoughtful work</p><h1>Agr<span>i</span>m<br /><em>Bhardwaj</em></h1><p className="opening-lede">Software developer building dependable systems, clean APIs, and interfaces that make complex work feel simple.</p><div className="opening-actions"><button onClick={() => jump('work')}>Read the case studies <ExternalArrow /></button><a href="mailto:agrim185official@gmail.com">Start a conversation <ExternalArrow /></a></div></div>
             <div className="opening-object"><div className="object-grid" /><div className="object-label"><span>OBJECT / 001</span><span>BACKEND + PRODUCT</span></div><Suspense fallback={<div className="scene-loading" />}><HeroScene /></Suspense><span className="object-coord">28.6139° N / 77.2090° E</span></div>
